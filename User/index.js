@@ -1,12 +1,17 @@
 'use strict';
-import phrases from './ru';
+import db from 'db';
+import log from 'logger';
+
+let logger = log(module);
+
+db.connect();
 
 class User{
   constructor(user){
     this.user = user;
   }
   hello(who){
-    console.log(`${phrases.hello} ${who.user}`);
+    logger(`${db.getPhrase('hello')} ${who.user}`);
   }
 }
 
